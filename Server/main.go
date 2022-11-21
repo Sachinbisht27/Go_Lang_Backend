@@ -6,24 +6,12 @@ import (
 	"github.com/gorilla/mux"
 	"gorm.io/driver/postgres"
 
-	// "os"
 	"fmt"
 	"log"
-
 	_ "github.com/lib/pq"
-	"gorm.io/gorm"
+	db "gorm.io/gorm"
+	models "Server/src/models"
 )
-
-var DB *gorm.DB
-
-type SignUp struct{
-	ID        uint      `gorm:"primaryKey" json:"id"`
-	FirstName string 	`gorm:"not null;" json:"firstname"`
-	LastName  string 	`gorm:"not null;" json:"lastname"`
-	Email     string	`gorm:"not null;" json:"email"`
-	Password  uint		`gorm:"not null;" json:"password"`
-	ConPassword  uint	`gorm:"not null;" json:"conpassword"`
-}
 
 const (
     HOST = "localhost"
@@ -47,15 +35,14 @@ func main() {
         "host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
         HOST, PORT, USER, PASSWORD, DBNAME,
     )
-    DB, err := gorm.Open(postgres.Open(connString), &gorm.Config{})
+    db, err := db.Open(postgres.Open(connString), &db.Config{})
     if err != nil {
         log.Fatal(err)
     }
 
-	DB.AutoMigrate(&SignUp{})
-	
-	fmt.Println("Successfully connected!")
-	// connect()
+	db.AutoMigrate(models.SignUp{})
+
+  	fmt.Println("Successfully connected!")
 
 	initializerRouter()
 }
