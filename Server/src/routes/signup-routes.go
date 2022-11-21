@@ -2,9 +2,16 @@ package routes
 
 import(
 	"github.com/gorilla/mux"
-	"Server/src/controllers"
+	controller "Server/src/controllers"
+	"log"
+	"net/http"
 )
 
-var RegisterSignUpRoutes = func(router *mux.Router) {
-	router.HandleFunc("/signup/", controllers.StoreSignupDetails).Methods("POST")
+func HandlerRouting() {
+	r := mux.NewRouter()
+	r.HandleFunc("/signup", controller.StoreSignupDetails).Methods("POST")
+
+
+	log.Fatal(http.ListenAndServe(":9000",r))
+	
 }
