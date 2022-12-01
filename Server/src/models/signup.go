@@ -13,8 +13,8 @@ type SignUp struct{
 	FirstName string 	`gorm:"not null;" json:"firstname"`
 	LastName  string 	`gorm:"not null;" json:"lastname"`
 	Email     string	`gorm:"not null;" json:"email"`
-	Password  uint		`gorm:"not null;" json:"password"`
-	ConPassword  uint	`gorm:"not null;" json:"confirmpassword"`
+	Password  string		`gorm:"not null;" json:"password"`
+	ConPassword  string	`gorm:"not null;" json:"conpassword"`
 }
 
 
