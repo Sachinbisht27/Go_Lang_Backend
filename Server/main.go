@@ -12,6 +12,7 @@ import (
 func main() {
 	r := mux.NewRouter()
 	routes.RegisterSignUpDetailsRoutes(r)
+	routes.RegisterLogInDetailsRoutes(r)
 	http.Handle("/", r)
 	log.Fatal(http.ListenAndServe("localhost:9010", r))
 }

@@ -21,7 +21,7 @@ type SignUp struct{
 func init(){
 	config.Connect()
 	db = config.GetDB()
-	db.AutoMigrate(&SignUp{})
+	db.AutoMigrate(&SignUp{}, &LogIn{})
 	fmt.Println("Successfully connected!")
 }
 
