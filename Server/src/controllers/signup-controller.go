@@ -1,9 +1,9 @@
 package controllers
 
 import (
+	models "Server/src/models"
 	"encoding/json"
 	"net/http"
-	models "Server/src/models"
 	// "gorm.io/gorm"
 	// "fmt"
 	// "strconv"

@@ -10,11 +10,10 @@ var db *gorm.DB
 type SignUp struct{
 	gorm.Model
 	
-	FirstName string 	`gorm:"not null;" json:"firstname"`
-	LastName  string 	`gorm:"not null;" json:"lastname"`
+	FullName string 	`gorm:"not null;" json:"fullname"`
 	Email     string	`gorm:"not null;" json:"email"`
-	Password  string		`gorm:"not null;" json:"password"`
-	ConPassword  string	`gorm:"not null;" json:"conpassword"`
+	Password  string	`gorm:"not null;" json:"password"`
+	HasAgreed bool		`gorm:"not null;" json:"hasAgreed"`
 }
 
 
